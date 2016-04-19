@@ -27,7 +27,9 @@ public class PhoneNumberFormatterTest {
     }
 
     @Test
-    public void testCheckDoubleDashes() {
-
+    public void testCheckNumberSize() {
+        input = "0 - 22 1985--342";
+        expected = "022-198-53-42";
+        assertEquals("Checks double dashes", expected, phoneNumberFormatter.solution(input));
     }
 }
