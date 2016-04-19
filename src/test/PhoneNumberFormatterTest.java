@@ -13,7 +13,8 @@ public class PhoneNumberFormatterTest {
     private String input;
     private String expected;
 
-    @Before public void PhoneNumberFormatter() {
+    @Before
+    public void setUp() {
         phoneNumberFormatter = new PhoneNumberFormatter();
         input    = "";
         expected = "";
@@ -41,7 +42,7 @@ public class PhoneNumberFormatterTest {
     }
 
     @Test
-    public void testEvenOnlyDigitPhoneNumbers() {
+    public void testEvenOnyDigitPhoneNumbers() {
         input = "1234567";
         expected = "123-45-67";
         assertEquals("Even Only digit phone number", expected, phoneNumberFormatter.solution(input));

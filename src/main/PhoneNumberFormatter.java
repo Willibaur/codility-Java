@@ -6,9 +6,9 @@ public class PhoneNumberFormatter {
         return formatPhoneNumber(phoneNumber, checkNumberSize(phoneNumber));
     }
 
-    public Boolean checkNumberSize(String phoneNumber) {
+    private Boolean checkNumberSize(String phoneNumber) {
         phoneNumber = removeNonDigits(phoneNumber);
-        return phoneNumber.length() % 3 == 1 ? true: false;
+        return phoneNumber.length() % 3 == 1;
     }
 
     private String removeNonDigits(String s) {
@@ -18,7 +18,7 @@ public class PhoneNumberFormatter {
     private String formatPhoneNumber(String s, boolean lastGroup) {
         String tempNumber = "";
         int dashCounter = 0;
-        if (lastGroup == false) {
+        if (!lastGroup) {
             for (int i = 0; i < s.length(); i++) {
                 if (dashCounter < 3) {
                     tempNumber = tempNumber.concat(s.substring(i, i + 1));
@@ -40,6 +40,6 @@ public class PhoneNumberFormatter {
         return tempNumber;
     }
 
-    public static void main(String args[]) {
+    public static void main() {
     }
 }
