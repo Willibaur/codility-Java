@@ -19,6 +19,14 @@ public class CarParkTest {
     }
 
     @Test
+    public void testNoPartialOrFullHour() {
+        entryTime = "19:00";
+        exitTime  = "19:00";
+        expected  = 0;
+        assertEquals("No time", expected, carPark.till(entryTime, exitTime));
+    }
+
+    @Test
     public void testPartialHourOnly() {
         entryTime = "15:00";
         exitTime  = "15:01";
