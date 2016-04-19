@@ -41,4 +41,20 @@ public class CarParkTest {
         expected  = 9;
         assertEquals("Full 1st hour and partial 2nd", expected, carPark.till(entryTime, exitTime));
     }
+
+    @Test
+    public void testTwoFullHours() {
+        entryTime = "20:00";
+        exitTime  = "22:00";
+        expected  = 9;
+        assertEquals("Full 2 hours", expected, carPark.till(entryTime, exitTime));
+    }
+
+    @Test
+    public void testMoreThanTwoHours() {
+        entryTime = "10:00";
+        exitTime  = "13:21";
+        expected  = 17;
+        assertEquals("Full 2 hours", expected, carPark.till(entryTime, exitTime));
+    }
 }
