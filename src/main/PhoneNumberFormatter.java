@@ -7,7 +7,6 @@ public class PhoneNumberFormatter {
     }
 
     private Boolean checkNumberSize(String phoneNumber) {
-        phoneNumber = removeNonDigits(phoneNumber);
         return phoneNumber.length() % 3 == 1;
     }
 
@@ -18,28 +17,22 @@ public class PhoneNumberFormatter {
     private String formatPhoneNumber(String s, boolean lastGroup) {
         String tempNumber = "";
         int dashCounter = 0;
-        if (!lastGroup) {
-            for (int i = 0; i < s.length(); i++) {
-                if (dashCounter < 3) {
-                    tempNumber = tempNumber.concat(s.substring(i, i + 1));
-                    dashCounter++;
-                } else {
-                    tempNumber = tempNumber.concat("-");
-                    tempNumber = tempNumber.concat(s.substring(i, i + 1));
-                    dashCounter = 1;
-                }
+        for (int i = 0; i < s.length(); i++) {
+            if (dashCounter < 3) {
+                tempNumber = tempNumber.concat(s.substring(i, i + 1));
+                dashCounter++;
+            } else if (dashCounter == 3){
+                tempNumber = tempNumber.concat("-");
+                tempNumber = tempNumber.concat(s.substring(i, i + 1));
+                dashCounter = 1;
             }
-        } else {
-            tempNumber = formatPhoneNumber(s, false);
+        }
+        if (lastGroup) {
             char[] temp =  tempNumber.toCharArray();
             temp[temp.length - 2] = temp[temp.length - 3];
             temp[temp.length - 3] = '-';
             tempNumber = new String(temp);
         }
-
         return tempNumber;
-    }
-
-    public static void main() {
     }
 }

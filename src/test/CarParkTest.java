@@ -65,4 +65,12 @@ public class CarParkTest {
         expected  = 17;
         assertEquals("Full 2 hours", expected, carPark.till(entryTime, exitTime));
     }
+
+    @Test
+    public void testWhenEntryTimeIsBiggerThanExitTime() {
+        entryTime = "10:00";
+        exitTime  = "13:21";
+        expected  = 17;
+        assertEquals("Full 2 hours", expected, carPark.till(entryTime, exitTime));
+    }
 }

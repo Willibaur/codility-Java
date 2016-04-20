@@ -42,9 +42,17 @@ public class PhoneNumberFormatterTest {
     }
 
     @Test
-    public void testEvenOnyDigitPhoneNumbers() {
+    public void testOddOnyDigitPhoneNumbers() {
         input = "1234567";
         expected = "123-45-67";
         assertEquals("Even Only digit phone number", expected, phoneNumberFormatter.solution(input));
     }
+
+    @Test
+    public void testWhenLastGroupIsSingleDigit() {
+        input = "12345678";
+        expected = "123-456-78";
+        assertEquals("Group when last group is one digit", expected, phoneNumberFormatter.solution(input));
+    }
+
 }

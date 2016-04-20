@@ -56,4 +56,3 @@ Contributors
 ------------
 
 * [William Bautista](https://github.com/Willibaur)
-*
