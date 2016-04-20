@@ -42,18 +42,27 @@ public class CarPark {
 
     private int timeCalculator(LocalTime entryTime, LocalTime exitTime) {
         Duration duration;
+        Duration previousDayDuration;
+        Duration nextDayDuration;
         int totalHours;
+        int previousDayHours;
+        int nextDayHours;
 
         duration = Duration.between(entryTime, exitTime);
-        totalHours = (int)(ceil((float)duration.toMinutes()/60));
+
+        if ((float)duration.toMinutes() < 0) {
+            previousDayDuration = Duration.between(entryTime, formatter("23:59"));
+            nextDayDuration = Duration.between(formatter("00:00"), exitTime);
+            previousDayHours = (int)(ceil((float)previousDayDuration.toMinutes()/60));
+            nextDayHours = (int)(ceil((float)nextDayDuration.toMinutes()/60));
+            totalHours = previousDayHours + nextDayHours;
+        } else {
+            totalHours = (int)(ceil((float)duration.toMinutes()/60));
+        }
         return totalHours;
     }
 
-
     private LocalTime formatter(String stringTime) {
         return LocalTime.parse(stringTime);
-    }
-
-    public void main() {
     }
 }
